@@ -1,0 +1,35 @@
+{
+  "fuel_stations": [
+    {
+      "id": 1,
+      "name": "HP Petrol Pump - Andheri",
+      "address": "Andheri West, Mumbai",
+      "lat": 19.1136,
+      "lng": 72.8697,
+      "petrol_price": 92.50,
+      "diesel_price": 85.20,
+      "brand": "HP"
+    },
+    {
+      "id": 2,
+      "name": "Indian Oil - Bandra",
+      "address": "Bandra East, Mumbai",
+      "lat": 19.0544,
+      "lng": 72.8400,
+      "petrol_price": 90.90,
+      "diesel_price": 84.50,
+      "brand": "Indian Oil"
+    },
+    {
+  "id": 3,
+  "name": "Shell - Lonavala",
+  "address": "Lonavala, Maharashtra",
+  "lat": 18.7547,
+  "lng": 73.4072,
+  "petrol_price": 87.90,
+  "diesel_price": 81.50,
+  "brand": "Shell"
+}
+
+  ]
+}
