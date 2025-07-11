@@ -27,7 +27,7 @@ const RecommendationsSection: React.FC = () => {
   const [sortedEssentials, setSortedEssentials] = useState<any[]>([]);
 
 useEffect(() => {
-  fetch('http://localhost:5000/api/recommendations')
+  fetch(`${import.meta.env.VITE_API_URL}/api/recommendations`)
     .then(res => res.json())
     .then(data => {
       if (data.status === 'success') {
