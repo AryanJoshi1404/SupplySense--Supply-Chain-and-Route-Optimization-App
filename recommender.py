@@ -92,52 +92,29 @@ class DatabaseManager:
         return psycopg2.connect(**self.db_config)
     
     def get_product_images(self, product_names: List[str]) -> Dict[str, str]:
-        """
-        Get product images from database.
-        
-        Args:
-            product_names (List[str]): List of product names
-            
-        Returns:
-            Dict[str, str]: Dictionary mapping product names to image URLs
-        """
         try:
             if not product_names:
                 print("No product names provided")
                 return {}
-                
-            print(f"Looking for images for products: {product_names}")
-            
             conn = self.get_connection()
             cursor = conn.cursor(cursor_factory=RealDictCursor)
-            
-            # Using IN clause with placeholders
             placeholders = ','.join(['%s'] * len(product_names))
             query = f"""
                 SELECT item_name, image_url 
                 FROM item_images 
-                WHERE item_name IN ({placeholders})
+                WHERE LOWER(TRIM(item_name)) IN ({placeholders})
             """
-            
+            lower_names = [name.lower().strip() for name in product_names]
             print(f"Executing query: {query}")
-            print(f"With parameters: {product_names}")
-            
-            cursor.execute(query, product_names)
+            print(f"With parameters: {lower_names}")
+            cursor.execute(query, lower_names)
             results = cursor.fetchall()
-            
-            print(f"Database returned {len(results)} results")
-            
-            # Convert to dictionary
             product_images = {}
             for row in results:
-                product_images[row['item_name']] = row['image_url']
-                print(f"Found image for {row['item_name']}: {row['image_url']}")
-            
+                product_images[row['item_name'].lower().strip()] = row['image_url']
             cursor.close()
             conn.close()
-            
             return product_images
-            
         except Exception as e:
             print(f"Database error: {e}")
             return {}
@@ -320,7 +297,7 @@ def get_recommendations():
         
         for i, (product_name, score) in enumerate(recommendations):
             # Get image from database
-            image_url = product_images.get(product_name, 'https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=400&h=300&fit=crop&auto=format')
+            image_url = product_images.get(product_name.lower().strip(), 'https://images.unsplash.com/photo-1546549032-9571cd6b27df?w=400&h=300&fit=crop&auto=format')
             
             # Convert score to demand level
             demand = convert_score_to_demand(score)
