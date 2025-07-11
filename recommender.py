@@ -102,24 +102,36 @@ class DatabaseManager:
             Dict[str, str]: Dictionary mapping product names to image URLs
         """
         try:
+            if not product_names:
+                print("No product names provided")
+                return {}
+                
+            print(f"Looking for images for products: {product_names}")
+            
             conn = self.get_connection()
             cursor = conn.cursor(cursor_factory=RealDictCursor)
             
-            # Create placeholder string for SQL IN clause
+            # Using IN clause with placeholders
             placeholders = ','.join(['%s'] * len(product_names))
             query = f"""
                 SELECT item_name, image_url 
                 FROM item_images 
-                WHERE item_name = ANY(%s)
+                WHERE item_name IN ({placeholders})
             """
             
-            cursor.execute(query, (product_names,))
+            print(f"Executing query: {query}")
+            print(f"With parameters: {product_names}")
+            
+            cursor.execute(query, product_names)
             results = cursor.fetchall()
+            
+            print(f"Database returned {len(results)} results")
             
             # Convert to dictionary
             product_images = {}
             for row in results:
                 product_images[row['item_name']] = row['image_url']
+                print(f"Found image for {row['item_name']}: {row['image_url']}")
             
             cursor.close()
             conn.close()
@@ -174,7 +186,102 @@ def convert_score_to_demand(score: float) -> str:
 # def get_trending_status(score: float) -> str:
 #     """Determine if item is trending based on score."""
 #     return "Rising" if score >= 0.5 else "Stable"
+@app.route('/api/test-db', methods=['GET'])
+def test_database():
+    """Test database connection and image retrieval."""
+    try:
+        conn = db_manager.get_connection()
+        cursor = conn.cursor(cursor_factory=RealDictCursor)
+        
+        # Test basic connection
+        cursor.execute("SELECT COUNT(*) as count FROM item_images")
+        count_result = cursor.fetchone()
+        
+        # Get a few sample records
+        cursor.execute("SELECT item_name, image_url FROM item_images LIMIT 5")
+        sample_results = cursor.fetchall()
+        
+        cursor.close()
+        conn.close()
+        
+        return jsonify({
+            'status': 'success',
+            'total_images': count_result['count'],
+            'sample_data': [dict(row) for row in sample_results],
+            'db_config': {
+                'host': DB_CONFIG['host'],
+                'database': DB_CONFIG['database'],
+                'user': DB_CONFIG['user'],
+                'port': DB_CONFIG['port']
+            }
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e)
+        }), 500
 
+@app.route('/api/debug-images', methods=['GET'])
+def debug_images():
+    """Debug endpoint to test image retrieval."""
+    try:
+        # Test 1: Check if we can connect to database
+        conn = db_manager.get_connection()
+        cursor = conn.cursor(cursor_factory=RealDictCursor)
+        
+        # Test 2: Check table structure
+        cursor.execute("SELECT column_name FROM information_schema.columns WHERE table_name = 'item_images'")
+        columns = [row['column_name'] for row in cursor.fetchall()]
+        
+        # Test 3: Get total count
+        cursor.execute("SELECT COUNT(*) as total FROM item_images")
+        total_count = cursor.fetchone()['total']
+        
+        # Test 4: Get sample data
+        cursor.execute("SELECT item_name, image_url FROM item_images LIMIT 10")
+        sample_data = cursor.fetchall()
+        
+        # Test 5: Get current recommendations
+        current_date = datetime.now().strftime("%Y-%m-%d")
+        recommendations = recommendation_engine.recommend_items_for_date(current_date)
+        recommended_products = [item[0] for item in recommendations[:5]]  # First 5 products
+        
+        # Test 6: Check if recommended products exist in database
+        if recommended_products:
+            placeholders = ','.join(['%s'] * len(recommended_products))
+            query = f"SELECT item_name, image_url FROM item_images WHERE item_name IN ({placeholders})"
+            cursor.execute(query, recommended_products)
+            matching_images = cursor.fetchall()
+        else:
+            matching_images = []
+        
+        cursor.close()
+        conn.close()
+        
+        return jsonify({
+            'status': 'success',
+            'debug_info': {
+                'database_connected': True,
+                'table_columns': columns,
+                'total_images_in_db': total_count,
+                'sample_data': [dict(row) for row in sample_data],
+                'recommended_products': recommended_products,
+                'matching_images': [dict(row) for row in matching_images],
+                'matches_found': len(matching_images)
+            }
+        })
+        
+    except Exception as e:
+        return jsonify({
+            'status': 'error',
+            'message': str(e),
+            'debug_info': {
+                'database_connected': False,
+                'error_details': str(e)
+            }
+        }), 500
+    
 @app.route('/api/recommendations', methods=['GET'])
 def get_recommendations():
     """Get product recommendations for current date."""
