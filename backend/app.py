@@ -1,8 +1,10 @@
 from flask import Flask, request, jsonify
 from services.osrm_client import get_coordinates_from_location, get_route
 from models.route_optimizer import get_best_route
+from flask_cors import CORS  
 
 app = Flask(__name__)
+CORS(app, resources={r"/*": {"origins": "*"}}) 
 
 @app.route('/optimize', methods=['POST'])
 def optimize():
@@ -17,7 +19,7 @@ def optimize():
     # Example config — you can make this dynamic too
     FUEL_PRICES = {'petrol': 105.0, 'diesel': 95.0}
     MILEAGE = 15.0  # in km/l
-    WEIGHTS = {'fuel': 0.0, 'time': 1.0, 'spoilage': 0.0}
+    WEIGHTS = {'fuel': 0.4, 'time': 0.45, 'spoilage': 0.15}
 
     try:
         start_coords = get_coordinates_from_location(start)
