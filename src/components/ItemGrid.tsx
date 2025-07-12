@@ -15,7 +15,9 @@ interface ItemGridProps {
   expanded?: boolean;
 }
 
+
 const ItemGrid: React.FC<ItemGridProps> = ({ items, compact = false, expanded = false }) => {
+  console.log('ItemGrid items:', items);
   const getDemandIcon = (demand: string) => {
     switch (demand.toLowerCase()) {
       case 'high':
