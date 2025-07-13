@@ -19,82 +19,82 @@ const DisasterSection: React.FC = () => {
 
   const disasters: Record<string, DisasterData> = {
     coastal: {
-      region: 'Coastal Region',
+      region: 'Konkan - Coastal Region',
       calamity: 'Flooding',
       stores: [
         {
           name: 'Mumbai Supply Co.',
-          address: '123 Marine Drive, Mumbai',
-          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
+          address: 'Marine Drive, Mumbai',
+          image: 'https://images.unsplash.com/photo-1607977027972-e2aae2b5b1e0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8OHx8c3VwcGx5JTIwc3RvcmVzfGVufDB8fDB8fHww'
         },
         {
           name: 'Coastal Gear Emporium',
-          address: '456 Beach Road, Goa',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+          address: 'Beach Road, Goa',
+          image: 'https://images.unsplash.com/photo-1687203920859-c87cb0955630?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Emergency Essentials',
-          address: '789 Port Street, Chennai',
-          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
+          address: 'Raigad',
+          image: 'https://images.unsplash.com/photo-1633185953534-82d329bce7c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         }
       ],
       items: [
         {
           name: 'First Aid Kit',
           description: 'Comprehensive kit for minor injuries',
-          image: 'https://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1624638760852-8ede1666ab07?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zmlyc3QlMjBhaWQlMjBraXR8ZW58MHx8MHx8fDA%3Dhttps://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
           category: 'Medical'
         },
         {
           name: 'Water Purification Tablets',
           description: 'Purifies water for safe drinking',
-          image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1643114455894-d7a4cd35c395?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHdhdGVyJTIwcHVyaWZpY2F0aW9uJTIwdGFibGV0c3xlbnwwfHwwfHx8MA%3D%3D',
           category: 'Water'
         },
         {
           name: 'Emergency Radio',
           description: 'Receives emergency broadcasts',
-          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1670234192944-5d5d06b762be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZW1lcmdlbmN5JTIwcmFkaW98ZW58MHx8MHx8fDA%3D',
           category: 'Communication'
         },
         {
           name: 'Portable Charger',
           description: 'Keeps devices charged',
-          image: 'https://images.unsplash.com/photo-1609592806596-7c8e0e2b7b7e?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1619489646924-b4fce76b1db5?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cG9ydGFibGUlMjBjaGFyZ2VyfGVufDB8fDB8fHww',
           category: 'Electronics'
         },
         {
           name: 'Flashlight',
           description: 'Provides light in dark conditions',
-          image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1561916960-dea3b9b0355a?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8Zmxhc2hsaWdodHxlbnwwfHwwfHx8MA%3D%3D',
           category: 'Lighting'
         },
         {
           name: 'Multi-Tool',
           description: 'Versatile tool for various tasks',
-          image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1713114344703-bf4fb0be30bd?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8bXVsdGklMjB0b29sfGVufDB8fDB8fHww',
           category: 'Tools'
         }
       ]
     },
     mountain: {
-      region: 'Mountain Area',
+      region: 'Himanchal - Mountain Area',
       calamity: 'Landslides',
       stores: [
         {
           name: 'Himalayan Supplies',
-          address: '321 Hill Station Road, Shimla',
-          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
+          address: 'Hill Station Road, Shimla',
+          image: 'https://images.unsplash.com/photo-1673784327991-00132d915b08?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Alpine Emergency Store',
-          address: '654 Mountain View, Manali',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+          address: '28 Mall Road, Manali',
+          image: 'https://images.unsplash.com/photo-1577374559080-cb697b79d8f0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Peak Safety Supplies',
-          address: '987 Valley Road, Darjeeling',
-          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
+          address: 'Parvati Valley Road, Kasol',
+          image: 'https://images.unsplash.com/photo-1687203920859-c87cb0955630?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         }
       ],
       items: [
@@ -107,7 +107,7 @@ const DisasterSection: React.FC = () => {
         {
           name: 'Thermal Blankets',
           description: 'Retains body heat in cold conditions',
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1699797467199-6bdf301649e8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mjd8fHRoZXJtYWwlMjBibGFua2V0c3xlbnwwfHwwfHx8MA%3D%3D',
           category: 'Warmth'
         },
         {
@@ -119,40 +119,40 @@ const DisasterSection: React.FC = () => {
         {
           name: 'High-Energy Food',
           description: 'Nutrient-dense emergency food',
-          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1623428187969-5da2dcea5ebf?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8cXVpbm9hJTIwYm93bHxlbnwwfHwwfHx8MA%3D%3D',
           category: 'Food'
         },
         {
           name: 'Weather Radio',
           description: 'Weather updates and alerts',
-          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1670234192944-5d5d06b762be?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8NHx8ZW1lcmdlbmN5JTIwcmFkaW98ZW58MHx8MHx8fDA%3D',
           category: 'Communication'
         },
         {
           name: 'Emergency Beacon',
           description: 'GPS distress signal device',
-          image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1735875593780-6fb12617ece1?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZW1lcmdlbmN5JTIwYmVhY29ufGVufDB8fDB8fHww',
           category: 'Safety'
         }
       ]
     },
     desert: {
-      region: 'Desert Zone',
+      region: 'Chtr Sambhajinagar - Arid Zone',
       calamity: 'Drought',
       stores: [
         {
-          name: 'Desert Survival Store',
-          address: '111 Sand Dune Ave, Jaisalmer',
-          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
+          name: 'Survival Supplies Store',
+          address: '11 MG Road, Nashik',
+          image: 'https://images.unsplash.com/photo-1673784327991-00132d915b08?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Arid Zone Supplies',
-          address: '222 Oasis Road, Bikaner',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+          address: '53 RK Road, Ahmednagar',
+          image: 'https://images.unsplash.com/photo-1577374559080-cb697b79d8f0?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MzF8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Drought Relief Center',
-          address: '333 Mirage Street, Jodhpur',
+          address: 'Mirage Street, Sambhajinagar',
           image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
         }
       ],
@@ -160,7 +160,7 @@ const DisasterSection: React.FC = () => {
         {
           name: 'Water Storage Containers',
           description: 'Large capacity water storage',
-          image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1597159059345-30248a18b087?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8d2F0ZXIlMjBzdG9yYWdlJTIwY29udGFpbmVyc3xlbnwwfHwwfHx8MA%3D%3Dhttps://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop',
           category: 'Water'
         },
         {
@@ -172,13 +172,13 @@ const DisasterSection: React.FC = () => {
         {
           name: 'Electrolyte Supplements',
           description: 'Prevents dehydration',
-          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1670850757263-6efc07d410f8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHZpdGFtaW4lMjBzdXBwbGVtZW50c3xlbnwwfHwwfHx8MA%3D%3D',
           category: 'Health'
         },
         {
           name: 'Cooling Towels',
           description: 'Provides cooling relief',
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1558505780-1e584fab3ede?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTF8fHRvd2Vsc3xlbnwwfHwwfHx8MA%3D%3D',
           category: 'Cooling'
         },
         {
@@ -190,188 +190,188 @@ const DisasterSection: React.FC = () => {
         {
           name: 'Desert Survival Guide',
           description: 'Essential survival information',
-          image: 'https://images.unsplash.com/photo-1481627834876-b7833e8f5570?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1513181059492-05ae995a16f2?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mnx8ZGVzZXJ0JTIwc3Vydml2YWwlMjBndWlkZXxlbnwwfHwwfHx8MA%3D%3D',
           category: 'Information'
         }
       ]
     },
-    volcanic: {
-      region: 'Volcanic Island',
-      calamity: 'Eruptions',
-      stores: [
-        {
-          name: 'Island Safety Store',
-          address: '444 Volcano View, Andaman',
-          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
-        },
-        {
-          name: 'Eruption Emergency',
-          address: '555 Lava Lane, Nicobar',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
-        },
-        {
-          name: 'Volcanic Preparedness',
-          address: '666 Ash Road, Lakshadweep',
-          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
-        }
-      ],
-      items: [
-        {
-          name: 'Dust Masks',
-          description: 'Protection from volcanic ash',
-          image: 'https://images.unsplash.com/photo-1584362917165-526f080a4d84?w=300&h=300&fit=crop',
-          category: 'Protection'
-        },
-        {
-          name: 'Emergency Evacuation Kit',
-          description: 'Quick evacuation essentials',
-          image: 'https://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
-          category: 'Evacuation'
-        },
-        {
-          name: 'Air Purifier',
-          description: 'Filters harmful particles',
-          image: 'https://images.unsplash.com/photo-1609592806596-7c8e0e2b7b7e?w=300&h=300&fit=crop',
-          category: 'Air Quality'
-        },
-        {
-          name: 'Emergency Communication',
-          description: 'Satellite communication device',
-          image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop',
-          category: 'Communication'
-        },
-        {
-          name: 'Protective Goggles',
-          description: 'Eye protection from ash',
-          image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop',
-          category: 'Protection'
-        },
-        {
-          name: 'Emergency Food Rations',
-          description: 'Long-lasting food supplies',
-          image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop',
-          category: 'Food'
-        }
-      ]
-    },
+    // volcanic: {
+    //   region: 'Volcanic Island',
+    //   calamity: 'Eruptions',
+    //   stores: [
+    //     {
+    //       name: 'Island Safety Store',
+    //       address: '444 Volcano View, Andaman',
+    //       image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
+    //     },
+    //     {
+    //       name: 'Eruption Emergency',
+    //       address: '555 Lava Lane, Nicobar',
+    //       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+    //     },
+    //     {
+    //       name: 'Volcanic Preparedness',
+    //       address: '666 Ash Road, Lakshadweep',
+    //       image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
+    //     }
+    //   ],
+    //   items: [
+    //     {
+    //       name: 'Dust Masks',
+    //       description: 'Protection from volcanic ash',
+    //       image: 'https://images.unsplash.com/photo-1584362917165-526f080a4d84?w=300&h=300&fit=crop',
+    //       category: 'Protection'
+    //     },
+    //     {
+    //       name: 'Emergency Evacuation Kit',
+    //       description: 'Quick evacuation essentials',
+    //       image: 'https://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
+    //       category: 'Evacuation'
+    //     },
+    //     {
+    //       name: 'Air Purifier',
+    //       description: 'Filters harmful particles',
+    //       image: 'https://images.unsplash.com/photo-1609592806596-7c8e0e2b7b7e?w=300&h=300&fit=crop',
+    //       category: 'Air Quality'
+    //     },
+    //     {
+    //       name: 'Emergency Communication',
+    //       description: 'Satellite communication device',
+    //       image: 'https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=300&h=300&fit=crop',
+    //       category: 'Communication'
+    //     },
+    //     {
+    //       name: 'Protective Goggles',
+    //       description: 'Eye protection from ash',
+    //       image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop',
+    //       category: 'Protection'
+    //     },
+    //     {
+    //       name: 'Emergency Food Rations',
+    //       description: 'Long-lasting food supplies',
+    //       image: 'https://images.unsplash.com/photo-1571019613454-1cb2f99b2d8b?w=300&h=300&fit=crop',
+    //       category: 'Food'
+    //     }
+    //   ]
+    // },
     forest: {
-      region: 'Forest Area',
+      region: 'Jalna - Forest Area',
       calamity: 'Wildfires',
       stores: [
         {
           name: 'Forest Safety Depot',
-          address: '777 Pine Tree Lane, Dehradun',
-          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
+          address: '283 Junagadh, Jalna',
+          image: 'https://images.unsplash.com/photo-1633185953534-82d329bce7c8?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8Mzl8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Wildfire Prevention Co.',
-          address: '888 Oak Street, Nainital',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+          address: '8 Oak Street, Beed',
+          image: 'https://images.unsplash.com/photo-1673784327991-00132d915b08?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTl8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         },
         {
           name: 'Forest Emergency Hub',
-          address: '999 Cedar Road, Mussoorie',
-          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
+          address: '76 Railway Station Road, Shegaon',
+          image: 'https://images.unsplash.com/photo-1687203920859-c87cb0955630?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTB8fHN1cHBseSUyMHN0b3Jlc3xlbnwwfHwwfHx8MA%3D%3D'
         }
       ],
       items: [
         {
           name: 'Fire Extinguisher',
           description: 'Portable fire suppression',
-          image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1649836215936-41c76a724233?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8ZmlyZSUyMGV4dGluZ3Vpc2Vyc3xlbnwwfHwwfHx8MA%3D%3D',
           category: 'Fire Safety'
         },
         {
           name: 'Smoke Masks',
           description: 'Protection from smoke inhalation',
-          image: 'https://images.unsplash.com/photo-1584362917165-526f080a4d84?w=300&h=300&fit=crop',
+          image: 'https://tse1.mm.bing.net/th/id/OIP.ZyuKPs1HT4dw_rHz_aa46QHaF2?pid=Api&P=0&h=180',
           category: 'Protection'
         },
         {
           name: 'Emergency Escape Ladder',
           description: 'Quick escape from elevated areas',
-          image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1595236435815-6558ddf29efe?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8bGFkZGVyc3xlbnwwfHwwfHx8MA%3D%3D',
           category: 'Escape'
         },
         {
           name: 'Fire Blanket',
           description: 'Smothers small fires',
-          image: 'https://images.unsplash.com/photo-1586023492125-27b2c045efd7?w=300&h=300&fit=crop',
+          image: 'https://images.unsplash.com/photo-1599933345241-2d01fe8d06ec?w=600&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8N3x8ZmlyZSUyMGJsYW5rZXR8ZW58MHx8MHx8fDA%3D',
           category: 'Fire Safety'
         },
         {
           name: 'Emergency Whistle',
           description: 'Signal for help',
-          image: 'https://images.unsplash.com/photo-1513475382585-d06e58bcb0e0?w=300&h=300&fit=crop',
+          image: 'https://tse2.mm.bing.net/th/id/OIP.J32vATposYhRP9IGMqHZYgHaHD?pid=Api&P=0&h=180',
           category: 'Signaling'
         },
         {
           name: 'Fireproof Document Bag',
           description: 'Protects important documents',
-          image: 'https://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
+          image: 'https://tse4.mm.bing.net/th/id/OIP.QyhXlwCACSJbZNFt2IQ2OQHaHa?pid=Api&P=0&h=180',
           category: 'Protection'
         }
       ]
     },
-    earthquake: {
-      region: 'Earthquake Zone',
-      calamity: 'Tremors',
-      stores: [
-        {
-          name: 'Seismic Safety Store',
-          address: '101 Fault Line Road, Delhi',
-          image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
-        },
-        {
-          name: 'Earthquake Preparedness',
-          address: '202 Tremor Street, Guwahati',
-          image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
-        },
-        {
-          name: 'Disaster Relief Center',
-          address: '303 Shake Avenue, Shimla',
-          image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
-        }
-      ],
-      items: [
-        {
-          name: 'Emergency Shelter',
-          description: 'Temporary housing solution',
-          image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=300&h=300&fit=crop',
-          category: 'Shelter'
-        },
-        {
-          name: 'Structural Assessment Kit',
-          description: 'Tools to assess building damage',
-          image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop',
-          category: 'Assessment'
-        },
-        {
-          name: 'Emergency Water',
-          description: 'Clean drinking water supply',
-          image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop',
-          category: 'Water'
-        },
-        {
-          name: 'Rescue Tools',
-          description: 'Tools for search and rescue',
-          image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=300&h=300&fit=crop',
-          category: 'Rescue'
-        },
-        {
-          name: 'Emergency Generator',
-          description: 'Backup power supply',
-          image: 'https://images.unsplash.com/photo-1609592806596-7c8e0e2b7b7e?w=300&h=300&fit=crop',
-          category: 'Power'
-        },
-        {
-          name: 'Medical Supplies',
-          description: 'First aid and medical equipment',
-          image: 'https://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
-          category: 'Medical'
-        }
-      ]
-    }
+    // earthquake: {
+    //   region: 'Earthquake Zone',
+    //   calamity: 'Tremors',
+    //   stores: [
+    //     {
+    //       name: 'Seismic Safety Store',
+    //       address: '101 Fault Line Road, Delhi',
+    //       image: 'https://images.unsplash.com/photo-1441986300917-64674bd600d8?w=100&h=100&fit=crop'
+    //     },
+    //     {
+    //       name: 'Earthquake Preparedness',
+    //       address: '202 Tremor Street, Guwahati',
+    //       image: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&h=100&fit=crop'
+    //     },
+    //     {
+    //       name: 'Disaster Relief Center',
+    //       address: '303 Shake Avenue, Shimla',
+    //       image: 'https://images.unsplash.com/photo-1560472354-b33ff0c44a43?w=100&h=100&fit=crop'
+    //     }
+    //   ],
+    //   items: [
+    //     {
+    //       name: 'Emergency Shelter',
+    //       description: 'Temporary housing solution',
+    //       image: 'https://images.unsplash.com/photo-1504280390367-361c6d9f38f4?w=300&h=300&fit=crop',
+    //       category: 'Shelter'
+    //     },
+    //     {
+    //       name: 'Structural Assessment Kit',
+    //       description: 'Tools to assess building damage',
+    //       image: 'https://images.unsplash.com/photo-1572635196237-14b3f281503f?w=300&h=300&fit=crop',
+    //       category: 'Assessment'
+    //     },
+    //     {
+    //       name: 'Emergency Water',
+    //       description: 'Clean drinking water supply',
+    //       image: 'https://images.unsplash.com/photo-1559827260-dc66d52bef19?w=300&h=300&fit=crop',
+    //       category: 'Water'
+    //     },
+    //     {
+    //       name: 'Rescue Tools',
+    //       description: 'Tools for search and rescue',
+    //       image: 'https://images.unsplash.com/photo-1551698618-1dfe5d97d256?w=300&h=300&fit=crop',
+    //       category: 'Rescue'
+    //     },
+    //     {
+    //       name: 'Emergency Generator',
+    //       description: 'Backup power supply',
+    //       image: 'https://images.unsplash.com/photo-1609592806596-7c8e0e2b7b7e?w=300&h=300&fit=crop',
+    //       category: 'Power'
+    //     },
+    //     {
+    //       name: 'Medical Supplies',
+    //       description: 'First aid and medical equipment',
+    //       image: 'https://images.unsplash.com/photo-1603398938235-f0de2b4c5b8b?w=300&h=300&fit=crop',
+    //       category: 'Medical'
+    //     }
+    //   ]
+    // }
   };
 
   const handleRegionClick = (regionKey: string) => {
