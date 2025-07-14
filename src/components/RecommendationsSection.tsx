@@ -5,81 +5,77 @@ import DisasterSection from './DisasterSection';
 
 const RecommendationsSection: React.FC = () => {
   const [expandedSection, setExpandedSection] = useState<string | null>(null);
-  // const [essentials, setEssentials] = useState<any[]>([]);
-  const [trends, setTrends] = useState<any[]>([]);
-
-  // Fetch data on load
-  // useEffect(() => {
-  //   fetch('http://localhost:5000/api/recommendations')
-  //     .then(res => res.json())
-  //     .then(data => {
-  //       if (data.status === 'success') {
-  //         const allItems = [...data.data.essentials, ...data.data.trends];
-  //         setEssentials(allItems);
-  //         // setTrends(data.data.trends);
-  //       }
-  //     })
-  //     .catch(err => {
-  //       console.error("Failed to load recommendations", err);
-  //     });
-  // }, []);
   const [essentials, setEssentials] = useState<any[]>([]);
   const [sortedEssentials, setSortedEssentials] = useState<any[]>([]);
+  const [loading, setLoading] = useState(true);
 
-useEffect(() => {
-  fetch(`${import.meta.env.VITE_API_URL}/api/recommendations`)
-  // fetch(`http://localhost:5000/api/recommendations`)
-    .then(res => res.json())
-    .then(data => {
-      if (data.status === 'success') {
-        const allItems = [...data.data.essentials, ...data.data.trends];
+  useEffect(() => {
+    fetch(`${import.meta.env.VITE_API_URL}/api/recommendations`)
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'success') {
+          const allItems = [...data.data.essentials, ...data.data.trends];
 
-        // Randomize but balance High/Medium/Low demand for initial view
-        const demandBuckets = {
-          High: allItems.filter(item => item.demand === 'High'),
-          Medium: allItems.filter(item => item.demand === 'Medium'),
-          Low: allItems.filter(item => item.demand === 'Low'),
-        };
+          // Randomize but balance High/Medium/Low demand for initial view
+          const demandBuckets = {
+            High: allItems.filter(item => item.demand === 'High'),
+            Medium: allItems.filter(item => item.demand === 'Medium'),
+            Low: allItems.filter(item => item.demand === 'Low'),
+          };
 
-        let mixed = [
-          ...demandBuckets.High.slice(0, 4),
-          ...demandBuckets.Medium.slice(0, 4),
-          ...demandBuckets.Low.slice(0, 2),
-        ];
-        if (mixed.length < 10) {
-          const usedIds = new Set(mixed.map(item => item.id));
-          const remaining = allItems.filter(item => !usedIds.has(item.id));
-          mixed = [...mixed, ...remaining.slice(0, 10 - mixed.length)];
-}
+          let mixed = [
+            ...demandBuckets.High.slice(0, 4),
+            ...demandBuckets.Medium.slice(0, 4),
+            ...demandBuckets.Low.slice(0, 2),
+          ];
+          if (mixed.length < 10) {
+            const usedIds = new Set(mixed.map(item => item.id));
+            const remaining = allItems.filter(item => !usedIds.has(item.id));
+            mixed = [...mixed, ...remaining.slice(0, 10 - mixed.length)];
+          }
 
-        // Shuffle the mixed items
-        const shuffled = mixed.sort(() => Math.random() - 0.5);
-        setEssentials(shuffled);
+          // Shuffle the mixed items
+          const shuffled = mixed.sort(() => Math.random() - 0.5);
+          setEssentials(shuffled);
 
-        // Sorted list for expanded view
+          // Sorted list for expanded view
           const sorted = allItems.sort((a, b) => {
-          const order: Record<'High' | 'Medium' | 'Low', number> = { High: 0, Medium: 1, Low: 2 };
+            const order: Record<'High' | 'Medium' | 'Low', number> = { High: 0, Medium: 1, Low: 2 };
 
-          const demandA = a.demand as 'High' | 'Medium' | 'Low';
-          const demandB = b.demand as 'High' | 'Medium' | 'Low';
-          // const demandA = order[a.demand as keyof typeof order] ?? 3; // fallback to 3 if not found
-          // const demandB = order[b.demand as keyof typeof order] ?? 3; // fallback to 3 if not found
+            const demandA = a.demand as 'High' | 'Medium' | 'Low';
+            const demandB = b.demand as 'High' | 'Medium' | 'Low';
+            // const demandA = order[a.demand as keyof typeof order] ?? 3; // fallback to 3 if not found
+            // const demandB = order[b.demand as keyof typeof order] ?? 3; // fallback to 3 if not found
 
-          return order[demandA] - order[demandB];
-        });
+            return order[demandA] - order[demandB];
+          });
 
-        setSortedEssentials(sorted);
-      }
-    })
-    .catch(err => {
-      console.error("Failed to load recommendations", err);
-    });
-}, []);
-
+          setSortedEssentials(sorted);
+        }
+        setLoading(false);
+      })
+      .catch(err => {
+        console.error("Failed to load recommendations", err);
+        setLoading(false);
+      });
+  }, []);
 
   const handleSectionClick = (section: string) => {
     setExpandedSection(expandedSection === section ? null : section);
   };
+
+  if (loading) {
+    return (
+      <div className="flex flex-col justify-center items-center min-h-screen">
+        <svg className="animate-spin h-12 w-12 text-blue-600 mb-4" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24">
+          <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"></circle>
+          <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"></path>
+        </svg>
+        <div className="text-lg font-semibold text-gray-700 mb-2">Loading recommendations...</div>
+        <div className="text-sm text-gray-500 italic">"Great supply chains build great futures."</div>
+      </div>
+    );
+  }
 
   return (
     <div className="space-y-6">
