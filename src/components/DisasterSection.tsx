@@ -425,17 +425,17 @@ const DisasterSection: React.FC = () => {
         {/* Recommended Items */}
         <div>
           <h4 className="text-lg font-semibold text-gray-800 mb-4">Recommended Items</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
             {regionData.items.map((item, index) => (
               <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
                 <img
                   src={item.image}
                   alt={item.name}
-                  className="w-full h-32 object-cover"
+                  className="w-full h-24 object-cover"
                 />
-                <div className="p-4">
-                  <h5 className="font-medium text-gray-800 mb-1">{item.name}</h5>
-                  <p className="text-sm text-gray-600 mb-2">{item.description}</p>
+                <div className="p-2">
+                  <h5 className="font-medium text-gray-800 mb-1 text-sm">{item.name}</h5>
+                  <p className="text-xs text-gray-600 mb-2">{item.description}</p>
                   <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
                     {item.category}
                   </span>
