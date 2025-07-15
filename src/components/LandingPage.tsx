@@ -21,12 +21,16 @@ const LandingPage: React.FC<LandingPageProps> = ({ onLogin }) => {
         <div className="text-center mb-12">
           <div className="flex items-center justify-center mb-6">
             <Truck className="h-16 w-16 text-yellow-400 mr-4" />
+            {/* <h1 className="text-4xl md:text-6xl font-bold text-white">
+              SupplySense
+            </h1> */}
             <h1 className="text-4xl md:text-6xl font-bold text-white">
-              Supply Chain Pro
+              <span className="text-white-600">Supply</span>
+              <span className="text-yellow-400">Sense</span>
             </h1>
           </div>
-          <p className="text-xl md:text-2xl text-blue-100 mb-8 max-w-2xl">
-            Streamline your logistics operations with our advanced supply chain management platform
+          <p className="text-xl md:text-2xl text-yellow-400 max-w-2xl">
+            Precision in Stocking. Perfection in Delivery
           </p>
         </div>
 

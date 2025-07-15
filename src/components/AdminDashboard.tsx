@@ -17,7 +17,11 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center h-16">
             <div className="flex items-center">
-              <h1 className="text-2xl font-bold text-blue-600">Supply Chain Pro</h1>
+              {/* <h1 className="text-2xl font-bold text-blue-600">SupplySense</h1> */}
+              <h1 className="text-2xl font-bold">
+                <span className="text-blue-600">Supply</span>
+                <span className="text-yellow-400">Sense</span>
+              </h1>
             </div>
             <div className="flex items-center space-x-4">
               <div className="flex items-center text-gray-700">
