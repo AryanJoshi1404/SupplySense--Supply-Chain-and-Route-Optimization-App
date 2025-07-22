@@ -4,3 +4,4 @@ networkx
 geopy
 requests
 flask-cors
+gunicorn
