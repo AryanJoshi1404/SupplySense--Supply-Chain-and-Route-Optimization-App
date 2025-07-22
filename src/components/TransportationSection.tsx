@@ -31,7 +31,7 @@ const TransportationSection: React.FC = () => {
 
     setIsOptimizing(true);
     try {
-      const res = await fetch('http://localhost:5000/optimize', {
+      const res = await fetch(`${import.meta.env.VITE_ROUTE_OPTI_BACKEND_URL}/optimize`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({
