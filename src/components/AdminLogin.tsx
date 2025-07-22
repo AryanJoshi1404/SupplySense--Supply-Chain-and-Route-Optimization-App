@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { Shield, Eye, EyeOff, ArrowLeft } from 'lucide-react';
 
 interface AdminLoginProps {
-  onLogin: () => void;
+  onLogin: (username: string) => void;
   onBack: () => void;
 }
 
@@ -27,8 +27,8 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin, onBack }) => {
     // Simulate authentication delay
     setTimeout(() => {
       // Simple validation (in real app, this would be server-side)
-      if (adminId === 'admin' && password === 'admin@123') {
-        onLogin();
+      if (adminId === 'admin' || adminId === 'aryan' && password === 'admin@123') {
+        onLogin(adminId);
       } else {
         setError('Invalid admin ID or password');
         setIsLoading(false);

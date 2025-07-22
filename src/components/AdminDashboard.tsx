@@ -5,9 +5,13 @@ import RecommendationsSection from './RecommendationsSection';
 
 interface AdminDashboardProps {
   onLogout: () => void;
+  adminName: string;
 }
 
-const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
+const capitalizeFirst = (str: string) =>
+  str ? str.charAt(0).toUpperCase() + str.slice(1) : '';
+
+const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout, adminName }) => {
   const [activeTab, setActiveTab] = useState<'transportation' | 'recommendations'>('transportation');
 
   return (
@@ -26,7 +30,7 @@ const AdminDashboard: React.FC<AdminDashboardProps> = ({ onLogout }) => {
             <div className="flex items-center space-x-4">
               <div className="flex items-center text-gray-700">
                 <User className="h-5 w-5 mr-2" />
-                <span className="font-medium">Admin</span>
+                <span className="font-medium">{capitalizeFirst(adminName)}</span>
               </div>
               <button
                 onClick={onLogout}

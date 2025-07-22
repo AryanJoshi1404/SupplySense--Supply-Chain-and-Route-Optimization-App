@@ -6,6 +6,7 @@ import DriverLogin from './components/DriverLogin';
 
 function App() {
   const [currentView, setCurrentView] = useState<'landing' | 'adminLogin' | 'driverLogin' | 'admin' | 'driver'>('landing');
+  const [adminName, setAdminName] = useState<string>('');
 
   const handleLogin = (type: 'admin' | 'driver') => {
     if (type === 'admin') {
@@ -15,7 +16,10 @@ function App() {
     }
   };
 
-  const handleSuccessfulLogin = (type: 'admin' | 'driver') => {
+  const handleSuccessfulLogin = (type: 'admin' | 'driver', username?: string) => {
+    if (type === 'admin' && username) {
+      setAdminName(username);
+    }
     setCurrentView(type);
   };
 
@@ -28,7 +32,7 @@ function App() {
       {currentView === 'landing' && <LandingPage onLogin={handleLogin} />}
       {currentView === 'adminLogin' && (
         <AdminLogin 
-          onLogin={() => handleSuccessfulLogin('admin')} 
+          onLogin={(username) => handleSuccessfulLogin('admin', username)} 
           onBack={() => setCurrentView('landing')} 
         />
       )}
@@ -38,7 +42,7 @@ function App() {
           onBack={() => setCurrentView('landing')} 
         />
       )}
-      {currentView === 'admin' && <AdminDashboard onLogout={handleLogout} />}
+      {currentView === 'admin' && <AdminDashboard onLogout={handleLogout} adminName={adminName} />}
       {currentView === 'driver' && (
         <div className="min-h-screen flex items-center justify-center">
           <div className="text-center">
