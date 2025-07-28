@@ -386,6 +386,9 @@ const DisasterSection: React.FC = () => {
 
   if (isExpanded && selectedRegion) {
     const regionData = disasters[selectedRegion];
+    // Duplicate items for seamless scroll
+    const scrollingItems = [...regionData.items, ...regionData.items];
+
     return (
       <div className="space-y-6">
         {/* Header with back button */}
@@ -425,23 +428,29 @@ const DisasterSection: React.FC = () => {
         {/* Recommended Items */}
         <div>
           <h4 className="text-lg font-semibold text-gray-800 mb-4">Recommended Items</h4>
-          <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3">
-            {regionData.items.map((item, index) => (
-              <div key={index} className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200">
-                <img
-                  src={item.image}
-                  alt={item.name}
-                  className="w-full h-24 object-cover"
-                />
-                <div className="p-2">
-                  <h5 className="font-medium text-gray-800 mb-1 text-sm">{item.name}</h5>
-                  <p className="text-xs text-gray-600 mb-2">{item.description}</p>
-                  <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                    {item.category}
-                  </span>
+          <div className="overflow-hidden w-full">
+            <div className="infinite-scroll-container">
+              {scrollingItems.map((item, idx) => (
+                <div
+                  key={item.name + '-' + idx}
+                  className="bg-white rounded-lg overflow-hidden shadow-sm border border-gray-200 mx-2"
+                  style={{ flex: '0 0 250px' }}
+                >
+                  <img
+                    src={item.image}
+                    alt={item.name}
+                    className="w-full h-28 object-cover"
+                  />
+                  <div className="p-2">
+                    <h5 className="font-medium text-gray-800 mb-1 text-sm">{item.name}</h5>
+                    <p className="text-xs text-gray-600 mb-2">{item.description}</p>
+                    <span className="inline-block px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
+                      {item.category}
+                    </span>
+                  </div>
                 </div>
-              </div>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>

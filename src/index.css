@@ -52,3 +52,18 @@
   margin: 8px 12px;
   line-height: 1.4;
 }
+
+@keyframes infinite-scroll {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.infinite-scroll-container {
+  display: flex;
+  width: 200%;
+  animation: infinite-scroll 30s linear infinite;
+}
