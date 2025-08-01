@@ -27,7 +27,7 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin, onBack }) => {
     // Simulate authentication delay
     setTimeout(() => {
       // Simple validation (in real app, this would be server-side)
-      if (adminId === 'admin' || adminId === 'aryan' && password === 'admin@123') {
+      if ((adminId === 'admin' || adminId === 'aryan') && password === 'admin@123') {
         onLogin(adminId);
       } else {
         setError('Invalid admin ID or password');
@@ -65,6 +65,13 @@ const AdminLogin: React.FC<AdminLoginProps> = ({ onLogin, onBack }) => {
             </div>
             <h1 className="text-3xl font-bold text-white mb-2">Admin Login</h1>
             <p className="text-blue-100">Access the administrative dashboard</p>
+          </div>
+
+          {/* Visitor Login Info */}
+          <div className="text-center mb-4">
+            <p className="text-sm text-blue-200">
+              For visitor login use <span className="font-semibold">Admin ID: admin</span> and <span className="font-semibold">password: admin@123</span>
+            </p>
           </div>
 
           {/* Login Form */}
